@@ -1,13 +1,16 @@
 <template>
-  <div>
-    <h1>{{ msg }}</h1>
-    <button class="button" v-on:click="helloCall()">Call API</button>
-    <p>API says: {{ api }}</p>
+  <div class="container">
+    <Header />
+    <Workspace />
+    <Footer />
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import Header from '../header';
+import Workspace from '../workspace';
+import Footer from '../footer';
 
 export default {
   data: function () {
@@ -29,6 +32,11 @@ export default {
         this.error = response.data;
       });
     }
+  },
+  components: {
+    'Header': Header,
+    'Workspace': Workspace,
+    'Footer': Footer
   }
 };
 </script>
@@ -36,5 +44,18 @@ export default {
 <style lang="sass">
 body {
   font-family: Open Sans, sans-serif;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+}
+
+.container {
+  display: grid;
+  height: 100vh;
+  background-color: #F0F0F0;
+  grid-template-areas: 'header'
+                       'workspace'
+                       'footer';
+  grid-template-rows: auto 1fr auto;
 }
 </style>

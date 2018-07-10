@@ -1,0 +1,10 @@
+
+<section class="timeline">
+  <div
+    v-for="marker in markers"
+    class="timeline-marker"
+    v-bind:style="{ top: marker.top + 'px' }">
+      {{marker.time}}
+  </div>
+</section>
+

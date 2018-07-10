@@ -1,0 +1,8 @@
+.workspace {
+    grid-area: workspace;
+    background-color: #A0A0A0;
+    display: grid;
+    grid-template-areas: 'left middle right';
+    grid-template-columns: auto 50px auto;
+    overflow-y: scroll;
+}
