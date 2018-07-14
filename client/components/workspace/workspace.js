@@ -15,14 +15,15 @@ export default {
       { text: 'ghsi '.repeat(15), time: 2 }
     ];
 
-    // linked list
-    captions[0].next = captions[1];
-    captions[1].prev = captions[0];
-    captions[1].next = captions[2];
-    captions[2].prev = captions[1];
+    const captions2 = [
+      { text: 'lol '.repeat(20), time: 1 },
+      { text: 'wtf '.repeat(230), time: 2 },
+      { text: 'wat '.repeat(15), time: 3 }
+    ];
 
     return {
       captions: captions,
+      captions2: captions2,
       pixelSeconds: 0
     };
   },
@@ -34,7 +35,7 @@ export default {
   },
   methods: {
     timeScaleChange: function (pixelSeconds) {
-      this.pixelSeconds = pixelSeconds;
+      this.pixelSeconds = Math.max(pixelSeconds, this.pixelSeconds);
     }
   }
 };

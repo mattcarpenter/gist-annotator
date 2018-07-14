@@ -27,7 +27,7 @@ export default {
 
     for (let i = 0; i < captions.length; i++) {
       let height = this.$children[i].$el.clientHeight;
-      let nextTime = (captions[i].next || { time: 0 }).time;
+      let nextTime = (captions[i + 1] || { time: 0 }).time;
       let timeDelta = nextTime ? nextTime - captions[i].time : 1;
       pixelSeconds = Math.max(height / timeDelta, pixelSeconds);
     }
