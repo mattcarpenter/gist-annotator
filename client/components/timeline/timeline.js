@@ -6,7 +6,7 @@ export default {
   ],
   data () {
     return {
-
+      duration: 10
     };
   },
   computed: {
