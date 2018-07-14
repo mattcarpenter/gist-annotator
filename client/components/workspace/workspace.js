@@ -11,13 +11,13 @@ export default {
   data () {
     const captions = [
       { text: 'abc'.repeat(10), time: 0 },
-      { text: 'def '.repeat(190), time: 1 },
+      { text: 'def '.repeat(100), time: 1 },
       { text: 'ghsi '.repeat(15), time: 2 }
     ];
 
     const captions2 = [
       { text: 'lol '.repeat(20), time: 1 },
-      { text: 'wtf '.repeat(230), time: 2 },
+      { text: 'wtf '.repeat(100), time: 2 },
       { text: 'wat '.repeat(15), time: 3 }
     ];
 

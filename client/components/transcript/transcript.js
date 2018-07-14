@@ -1,4 +1,5 @@
 import Caption from '../caption';
+import utils from '../../lib/utils';
 
 export default {
   name: 'transcript',
@@ -22,19 +23,9 @@ export default {
       return;
     }
 
-    let captions = this.$props.captions;
-    let pixelSeconds = 0;
-
-    for (let i = 0; i < captions.length; i++) {
-      let height = this.$children[i].$el.clientHeight;
-      let nextTime = (captions[i + 1] || { time: 0 }).time;
-      let timeDelta = nextTime ? nextTime - captions[i].time : 1;
-      pixelSeconds = Math.max(height / timeDelta, pixelSeconds);
-    }
-
+    const heights = this.$children.map(component => component.$el.clientHeight);
+    const pixelSeconds = utils.calculatePixelSeconds(this.$props.captions, heights);
     this.$emit('time-scale-change', pixelSeconds);
-
-    console.log('pixelSeconds: ', pixelSeconds);
   },
   methods: {
 
