@@ -1,0 +1,25 @@
+<modal :show="show" @close="close" width="75%">
+  <div class="modal-header">
+      <h3>New Project</h3>
+  </div>
+  <div class="modal-body">
+      <!-- v-model="propertyOnData" -->
+      <label class="form-label">
+          Project Name
+          <input v-model="projectName" class="form-control" />
+      </label>
+      <label class="form-label">
+          English SRT
+          <textarea v-model="englishSrt" class="form-control" rows="10"></textarea>
+      </label>
+      <label class="form-label">
+          Japanese SRT
+          <textarea v-model="japaneseSrt" class="form-control" rows="10"></textarea>
+      </label>
+  </div>
+  <div class="modal-footer text-right">
+      <button class="modal-default-button" @click="create()">
+          Create
+      </button>
+  </div>
+</modal>

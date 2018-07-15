@@ -2,8 +2,10 @@
 <section class="header">
   <h2>TRANSCRIPT ANNOTATOR</h2>
   <div class="menu">
-    <div class="button primary">NEW PROJECT</div>
-    <div class="button secondary">OPEN PROJECT</div>
+    <div class="button primary" v-on:click="toggleNewProjectModal()">NEW PROJECT</div>
+    <div class="button secondary" v-on:click="toggleOpenProjectModal()">OPEN PROJECT</div>
   </div>
+  <NewProjectModal :show="showNewProjectModal" v-on:close="toggleNewProjectModal()" />
+  <OpenProjectModal :show="showOpenProjectModal" v-on:close="toggleOpenProjectModal()" />
 </section>
 

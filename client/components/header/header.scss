@@ -1,3 +1,5 @@
+@import '../../assets/styles/colors';
+
 .header {
     grid-area: header;
     border-bottom: solid 1px #C0C0C0;
@@ -8,7 +10,7 @@
 .header h2 {
     @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed');
     font-family: 'IBM Plex Sans Condensed', sans-serif;
-    color: rgb(62, 150, 88);
+    color: $primary-color;
     font-size: 1.2em;
     display: inline-block;
 }
@@ -32,13 +34,13 @@
 }
 
 .button.primary, .button.secondary:hover {
-    background-color: rgb(62, 150, 88);
+    background-color: $primary-color;
     color: #FFFFFF;
 }
 
 .button.secondary {
-    border: solid 1px rgb(62, 150, 88);
-    color: rgb(62, 150, 88);
+    border: solid 1px $primary-color;
+    color: $primary-color;
 }
 
 @media (max-width: 476px) {
