@@ -21,7 +21,7 @@ describe('utils', function () {
     ].forEach((test) => {
       it('calcuates the correct pixelSeconds', function () {
         const pixelSeconds = utils.calculatePixelSeconds(test.captions, test.heights);
-        expect(pixelSeconds).to.be.equal(test.expected);
+        expect(`pixelSeconds=${pixelSeconds}`).to.be.equal(`pixelSeconds=${test.expected}`);
       });
     });
   });
