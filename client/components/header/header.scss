@@ -2,6 +2,7 @@
     grid-area: header;
     border-bottom: solid 1px #C0C0C0;
     padding-left: 10px;
+    position: relative;
 }
 
 .header h2 {
@@ -9,4 +10,49 @@
     font-family: 'IBM Plex Sans Condensed', sans-serif;
     color: rgb(62, 150, 88);
     font-size: 1.2em;
+    display: inline-block;
+}
+
+.menu {
+    display: inline-block;
+    margin-left: 10px;
+}
+.button {
+    padding: 5px;
+    width: 110px;
+    text-align: center;
+    font-size: 0.8em;
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+    position: relative;
+    top: -2px;
+    box-sizing: border-box;
+    height: 30px;
+}
+
+.button.primary, .button.secondary:hover {
+    background-color: rgb(62, 150, 88);
+    color: #FFFFFF;
+}
+
+.button.secondary {
+    border: solid 1px rgb(62, 150, 88);
+    color: rgb(62, 150, 88);
+}
+
+@media (max-width: 476px) {
+    .menu {
+        margin: 0px 0px 10px 0px;
+    }
+}
+
+@media (max-width: 255px) {
+    .button {
+        margin-bottom: 10px;
+    }
+
+    .menu {
+        margin-bottom: 0px;
+    }
 }
