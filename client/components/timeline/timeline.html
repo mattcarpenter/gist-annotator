@@ -3,7 +3,7 @@
   <div
     v-for="marker in markers"
     class="timeline-marker"
-    v-bind:style="{ top: marker.top + 'px' }">
+    v-bind:style="{ top: marker.top + 'px', 'font-weight': marker.beginningOfMinute ? 'bold' : 'normal' }">
       {{marker.time}}
   </div>
 </section>

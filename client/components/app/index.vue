@@ -52,7 +52,7 @@ body {
 .container {
   display: grid;
   height: 100vh;
-  background-color: #F0F0F0;
+  background-color: #FCFCFC;
   grid-template-areas: 'header'
                        'workspace'
                        'footer';

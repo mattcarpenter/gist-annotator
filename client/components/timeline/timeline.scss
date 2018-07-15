@@ -1,9 +1,14 @@
 .timeline {
     grid-area: middle;
-    background-color: #555;
+    background-color: #E0E0E0;
     position: relative;
+    border-left: solid 1px #C0C0C0;
+    border-right: solid 1px #C0C0C0;
 }
 
 .timeline-marker {
     position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 0.7em;
 }

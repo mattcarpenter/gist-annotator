@@ -19,17 +19,24 @@ export default {
 
   },
   mounted () {
-    if (!this.$props.captions) {
-      return;
-    }
-
-    const heights = this.$children.map(component => component.$el.clientHeight);
-    const pixelSeconds = utils.calculatePixelSeconds(this.$props.captions, heights);
-    this.$emit('time-scale-change', pixelSeconds);
+    window.addEventListener('resize', this.handleResize);
+    this.layoutCaptions();
   },
   methods: {
+    handleResize () {
+      this.layoutCaptions();
+    },
+    layoutCaptions () {
+      if (!this.$props.captions) {
+        return;
+      }
 
+      const heights = this.$children.map(component => component.$el.clientHeight);
+      const pixelSeconds = utils.calculatePixelSeconds(this.$props.captions, heights);
+      this.$emit('time-scale-change', pixelSeconds);
+    }
   },
-  updated () {
+  beforeDestroy () {
+    window.removeEventListener('resize', this.handleResize);
   }
 };

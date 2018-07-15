@@ -24,18 +24,31 @@ export default {
     return {
       captions: captions,
       captions2: captions2,
-      pixelSeconds: 0
+      pixelSeconds: 0,
+      receivedNewPixelSecondsAfterResize: true
     };
   },
   computed: {
 
   },
   mounted () {
-
+    window.addEventListener('resize', this.handleResize);
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.handleResize);
   },
   methods: {
     timeScaleChange: function (pixelSeconds) {
+      if (!this.receivedNewPixelSecondsAfterResize) {
+        // window resize event occurred and we're now receiving new pixelSeconds from the transcript track
+        // reset pixelSeconds otherwise we'll only be able to increase pixelSeconds, never decrease.
+        this.pixelSeconds = 0;
+        this.receivedNewPixelSecondsAfterResize = true;
+      }
       this.pixelSeconds = Math.max(pixelSeconds, this.pixelSeconds);
+    },
+    handleResize: function () {
+      this.receivedNewPixelSecondsAfterResize = false;
     }
   }
 };

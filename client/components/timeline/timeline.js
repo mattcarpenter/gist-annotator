@@ -1,3 +1,7 @@
+import moment from 'moment';
+import momentDurationFormatSetup from 'moment-duration-format';
+momentDurationFormatSetup(moment);
+
 export default {
   name: 'timeline',
   components: {},
@@ -6,17 +10,20 @@ export default {
   ],
   data () {
     return {
-      duration: 10
+      duration: 100
     };
   },
   computed: {
     markers: function () {
       const markers = [];
       let top = 0;
-      for (let i = 0; i < 10; i++) {
+
+      for (let milliseconds = 0; milliseconds < this.duration * 1000; milliseconds += 1000) {
+        const duration = moment.duration(milliseconds, 'milliseconds').format('h:mm:ss', { trim: false });
         markers.push({
-          time: i,
-          top: top
+          time: duration,
+          top: top,
+          beginningOfMinute: !((milliseconds / 1000) % 60)
         });
         top += this.$props.pixelSeconds || 0;
       }

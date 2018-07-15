@@ -6,9 +6,9 @@ function calculatePixelSeconds (captions, heights) {
   let pixelSeconds = 0;
 
   for (let i = 0; i < captions.length; i++) {
-    let height = heights[i];
-    let nextTime = (captions[i + 1] || { time: 0 }).time;
-    let timeDelta = nextTime ? nextTime - captions[i].time : 1;
+    const height = heights[i];
+    const nextTime = (captions[i + 1] || { time: 0 }).time;
+    const timeDelta = nextTime ? nextTime - captions[i].time : 1;
     pixelSeconds = Math.max(height / timeDelta, pixelSeconds);
   }
 
