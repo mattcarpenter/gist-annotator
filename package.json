@@ -9,6 +9,7 @@
     "build": "webpack --progress --hide-modules --config config/production.webpack.config.js"
   },
   "dependencies": {
+    "aws-sdk": "^2.275.1",
     "axios": "^0.18.0",
     "babel-runtime": "^6.23.0",
     "hapi": "^17.1.1",
