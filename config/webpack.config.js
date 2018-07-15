@@ -25,16 +25,6 @@ module.exports = {
   module: {
     rules: [
       {
-        enforce: 'pre',
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        include: projectRoot,
-        exclude: /node_modules/,
-        options: {
-          formatter: EslintFriendlyFormatter
-        }
-      },
-      {
         test: /\.scss$/,
         use: [
           'style-loader', // creates style nodes from JS strings

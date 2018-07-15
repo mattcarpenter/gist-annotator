@@ -36,7 +36,7 @@ module.exports = function (config) {
     //    http://karma-runner.github.io/0.13/config/browsers.html
     // 2. add it to the `browsers` array below.
     // browsers: ['ChromeHeadless'],
-    browsers: ['PhantomJS', 'PhantomJS_custom'],
+    browsers: ['PhantomJS'],
     frameworks: ['mocha', 'sinon-stub-promise', 'sinon-chai'],
     reporters: ['spec', 'coverage'],
     files: ['./index.js'],
@@ -46,20 +46,6 @@ module.exports = function (config) {
     webpack: webpackConfig,
     webpackMiddleware: {
       noInfo: true
-    },
-    // you can define custom flags
-    customLaunchers: {
-      'PhantomJS_custom': {
-        base: 'PhantomJS',
-        options: {
-          windowName: 'my-window',
-          settings: {
-            webSecurityEnabled: false
-          }
-        },
-        flags: ['--load-images=true'],
-        debug: true
-      }
     },
     phantomjsLauncher: {
       // Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom)
