@@ -16,7 +16,7 @@ var webpackConfig = merge(baseConfig, {
 // no need for app entry during tests
 delete webpackConfig.entry;
 
-webpackConfig.module.rules = webpackConfig.module.rules || []
+webpackConfig.module.rules = webpackConfig.module.rules || [];
 webpackConfig.module.rules.unshift({
   test: /\.js$/,
   include: path.resolve(projectRoot, 'client')
@@ -24,7 +24,7 @@ webpackConfig.module.rules.unshift({
 
 webpackConfig.module.rules.some(function (loader, i) {
   if (loader.loader === 'babel') {
-    loader.include = path.resolve(projectRoot, 'test/unit')
+    loader.include = path.resolve(projectRoot, 'test/unit');
     return true;
   }
 });
@@ -60,6 +60,10 @@ module.exports = function (config) {
         flags: ['--load-images=true'],
         debug: true
       }
+    },
+    phantomjsLauncher: {
+      // Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom)
+      exitOnResourceError: true
     },
     coverageReporter: {
       dir: './coverage',
