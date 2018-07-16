@@ -5,7 +5,8 @@ const Inert = require('inert');
 const path = require('path');
 
 const server = new Hapi.Server({
-  port: 3000
+  port: 3000,
+  debug: { request: ['error'] }
 });
 
 async function initWebpackTools (middleware, config) {
@@ -88,6 +89,23 @@ server.register({
     path: '/{path*}',
     handler: {
       file: './public/index.html'
+    }
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/api/projects',
+    handler: require('./server/handlers/api/projects')
+  });
+
+  server.route({
+    method: 'POST',
+    path: '/api/project/create',
+    handler: require('./server/handlers/api/project/create'),
+    options: {
+      validate: {
+        payload: require('./server/validators/api/project/create')
+      }
     }
   });
 

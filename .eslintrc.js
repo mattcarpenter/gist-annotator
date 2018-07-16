@@ -14,5 +14,6 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     // require semicolons
     'semi': ['error', 'always'],
+    'prefer-promise-reject-errors': 0
   }
 }
