@@ -1,5 +1,6 @@
 import NewProjectModal from '../new-project-modal';
 import OpenProjectModal from '../open-project-modal';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'header',
@@ -10,22 +11,17 @@ export default {
   props: [],
   data () {
     return {
-      showNewProjectModal: false,
-      showOpenProjectModal: false
     };
   },
-  computed: {
-
-  },
+  computed: mapState({
+    newProjectModalVisible: state => state.views.newProjectModal.visible,
+    openProjectModalVisible: state => state.views.openProjectModal.visible
+  }),
   mounted () {
 
   },
-  methods: {
-    toggleNewProjectModal: function () {
-      this.showNewProjectModal = !this.showNewProjectModal;
-    },
-    toggleOpenProjectModal: function () {
-      this.showOpenProjectModal = !this.showOpenProjectModal;
-    }
-  }
+  methods: mapActions('views', [
+    'toggleNewProjectModalVisible',
+    'toggleOpenProjectModalVisible'
+  ])
 };

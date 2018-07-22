@@ -1,12 +1,12 @@
 /* eslint-disable*/
 
-import Vue from 'vue'
-import App from './components/app/index.vue'
-
-// Axios doesn't include Promise polyfill (e.g. 'es6-promise'), if you need one, here is a good place to initiate it
+import Vue from 'vue';
+import App from './components/app/index.vue';
+import store from './store';
 
 new Vue({
   el: '#app',
+  store,
   components: {
     App
   }

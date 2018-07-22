@@ -4,6 +4,9 @@
   </div>
   <div class="modal-body">
       <!-- v-model="propertyOnData" -->
+      <div class="error" :show="!!errorMessage">
+          {{ errorMessage }}
+      </div>
       <label class="form-label">
           Project Name
           <input v-model="projectName" class="form-control" />
@@ -18,7 +21,7 @@
       </label>
   </div>
   <div class="modal-footer text-right">
-      <button class="modal-default-button" @click="create()">
+      <button class="modal-default-button" @click="createProject({ projectName, englishSrt, japaneseSrt })">
           Create
       </button>
   </div>

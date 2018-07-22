@@ -76,12 +76,8 @@ server.register({
   // Example api call
   server.route({
     method: 'GET',
-    path: '/api/call',
-    handler: function (request, h) {
-      return {
-        message: 'Hello!'
-      };
-    }
+    path: '/api/project/{projectName}',
+    handler: require('./server/handlers/api/project/get')
   });
 
   server.route({

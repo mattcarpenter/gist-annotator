@@ -6,7 +6,8 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 
 module.exports = {
   getProjects: getProjects,
-  createProject: createProject
+  createProject: createProject,
+  getProject: getProject
 };
 
 /**
@@ -26,6 +27,30 @@ function getProjects () {
       } else {
         resolve(data.Items);
       }
+    });
+  });
+};
+
+/**
+ * Gets a single project
+ *
+ * @returns {Promise}
+ */
+function getProject (projectName) {
+  const params = {
+    TableName: config.db.table,
+    Key: {
+      projectName: projectName
+    }
+  };
+
+  return new Promise((resolve, reject) => {
+    docClient.get(params, (err, data) => {
+      if (err) {
+        return reject(err);
+      }
+
+      resolve(data.Item);
     });
   });
 };

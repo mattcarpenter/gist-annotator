@@ -1,4 +1,5 @@
 import Modal from '../modal';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'new-project-modal',
@@ -13,18 +14,18 @@ export default {
       japaneseSrt: ''
     };
   },
-  computed: {
-
-  },
+  computed: mapState({
+    errorMessage: state => state.views.newProjectModal.errorMessage
+  }),
   mounted () {
 
   },
   methods: {
+    ...mapActions('projects', [
+      'createProject'
+    ]),
     close: function () {
-      this.$emit('close');
-    },
-    create: function () {
-      this.close();
+      this.$store.dispatch('views/toggleNewProjectModalVisible');
     }
   }
 };

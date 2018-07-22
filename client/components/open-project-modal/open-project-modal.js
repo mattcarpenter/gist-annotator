@@ -1,4 +1,5 @@
 import Modal from '../modal';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'open-project-modal',
@@ -8,18 +9,24 @@ export default {
   props: ['show'],
   data () {
     return {
-
+      projectName: ''
     };
   },
-  computed: {
-
-  },
+  computed: mapState({
+    projects: state => state.projects.all
+  }),
   mounted () {
 
   },
+  created () {
+    this.$store.dispatch('projects/getAllProjects');
+  },
   methods: {
+    ...mapActions('projects', [
+      'openProject'
+    ]),
     close: function () {
-      this.$emit('close');
+      this.$store.dispatch('views/toggleOpenProjectModalVisible');
     }
   }
 };
