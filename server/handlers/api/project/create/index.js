@@ -8,7 +8,8 @@ module.exports = function (req, h) {
       req.payload.japaneseSrt
     ).then(function () {
       resolve({
-        success: true
+        success: true,
+        project: req.payload
       });
     }, function (err) {
       resolve({

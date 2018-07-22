@@ -42,6 +42,8 @@ export default {
 </script>
 
 <style lang="sass">
+@import '../../assets/styles/colors.scss';
+
 body {
   font-family: Open Sans, sans-serif;
   height: 100vh;
@@ -57,5 +59,14 @@ body {
                        'workspace'
                        'footer';
   grid-template-rows: auto 1fr auto;
+}
+
+.error {
+  border: solid 1px $error-border-color;
+  background-color: $error-background-color;
+  padding: 5px;
+  font-size: 0.9em;
+  margin-bottom: 15px;
+  color: $error-color
 }
 </style>

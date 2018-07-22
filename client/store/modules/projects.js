@@ -21,7 +21,8 @@ const actions = {
   },
   createProject ({ commit }, { projectName, englishSrt, japaneseSrt }) {
     dao.createProject(projectName, englishSrt, japaneseSrt).then((data) => {
-      console.log('createProject data:', data);
+      commit('setCurrentProject', data.project);
+      commit('views/toggleNewProjectModalVisible', {}, { root: true });
     }, function (data) {
       if (data.error) {
         commit('views/setNewProjectModalErrorMessage', data.error.message, { root: true });

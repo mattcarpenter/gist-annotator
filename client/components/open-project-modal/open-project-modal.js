@@ -15,9 +15,6 @@ export default {
   computed: mapState({
     projects: state => state.projects.all
   }),
-  mounted () {
-
-  },
   created () {
     this.$store.dispatch('projects/getAllProjects');
   },

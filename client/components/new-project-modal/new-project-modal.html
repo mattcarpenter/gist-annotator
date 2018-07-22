@@ -4,7 +4,7 @@
   </div>
   <div class="modal-body">
       <!-- v-model="propertyOnData" -->
-      <div class="error" :show="!!errorMessage">
+      <div class="error" v-if="!!errorMessage">
           {{ errorMessage }}
       </div>
       <label class="form-label">
