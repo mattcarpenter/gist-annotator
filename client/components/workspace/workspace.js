@@ -11,6 +11,7 @@ export default {
   data () {
     const captions = [
       { text: 'abc'.repeat(10), time: 0 },
+      { text: 'wtf wtf'.repeat(10), time: 0.1 },
       { text: 'def '.repeat(100), time: 1 },
       { text: 'ghsi '.repeat(15), time: 2 }
     ];
