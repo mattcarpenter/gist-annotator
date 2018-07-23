@@ -55,7 +55,16 @@ function getProject (projectName) {
   });
 };
 
-function createProject (projectName, englishSrt, japaneseSrt, englishCaptions) {
+/**
+ * Creates a project
+ *
+ * @param {String} projectName
+ * @param {String} englishSrt
+ * @param {String} japaneseSrt
+ * @param {Object} englishCaptions
+ * @param {Object} japaneseCaptions
+ */
+function createProject (projectName, englishSrt, japaneseSrt, englishCaptions, japaneseCaptions) {
   const getParams = {
     TableName: config.db.table,
     Key: {
@@ -79,9 +88,10 @@ function createProject (projectName, englishSrt, japaneseSrt, englishCaptions) {
         TableName: config.db.table,
         Item: {
           projectName: projectName,
-          englishSrt: englishSrt,
-          japaneseSrt: japaneseSrt,
-          englishCaptions: englishCaptions
+          //englishSrt: englishSrt,
+          //japaneseSrt: japaneseSrt,
+          englishCaptions: englishCaptions,
+          japaneseCaptions: japaneseCaptions
         }
       };
 

@@ -10,27 +10,14 @@ export default {
   },
   props: [],
   data () {
-    /*const captions = [
-      { text: 'abc'.repeat(10), start: 0 },
-      { text: 'wtf wtf'.repeat(10), start: 0.1 },
-      { text: 'def '.repeat(100), start: 1 },
-      { text: 'ghsi '.repeat(15), start: 2 }
-    ];
-
-    const captions2 = [
-      { text: 'lol '.repeat(20), start: 1 },
-      { text: 'wtf '.repeat(100), start: 2 },
-      { text: 'wat '.repeat(15), start: 3 }
-    ];*/
-
     return {
-      japaneseCaptions: [],
       pixelSeconds: 0,
       receivedNewPixelSecondsAfterResize: true
     };
   },
   computed: mapState({
-    englishCaptions: state => (state.projects.current || {}).englishCaptions || []
+    englishCaptions: state => (state.projects.current || {}).englishCaptions || [],
+    japaneseCaptions: state => (state.projects.current || {}).japaneseCaptions || []
   }),
   mounted () {
     window.addEventListener('resize', this.handleResize);
