@@ -55,7 +55,7 @@ function getProject (projectName) {
   });
 };
 
-function createProject (projectName, englishSrt, japaneseSrt) {
+function createProject (projectName, englishSrt, japaneseSrt, englishCaptions) {
   const getParams = {
     TableName: config.db.table,
     Key: {
@@ -80,7 +80,8 @@ function createProject (projectName, englishSrt, japaneseSrt) {
         Item: {
           projectName: projectName,
           englishSrt: englishSrt,
-          japaneseSrt: japaneseSrt
+          japaneseSrt: japaneseSrt,
+          englishCaptions: englishCaptions
         }
       };
 

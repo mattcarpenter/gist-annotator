@@ -1,3 +1,6 @@
+const msPattern = /(.+?)[,:](\d+?)$/;
+const moment = require('moment');
+
 module.exports = {
   parse: parse
 };
@@ -17,12 +20,29 @@ function parse (srt) {
   let i = 0;
   while (i < lines.length) {
     if (isStart(lines, i)) {
-      let number = parseInt(lines[i], 10);
-      let timeRange = lines[i + 1];
-      let capLines = lines.slice(i + 2, seekEndOfCaption(lines, i));
+      const number = parseInt(lines[i], 10);
+      const timeRange = lines[i + 1];
+      const capLines = lines.slice(i + 2, seekEndOfCaption(lines, i));
+
+      // parse timeRange
+      const timeRangeParts = timeRange.split('-->').map((part) => {
+        return part.trim();
+      });
+      const startMatch = msPattern.exec(timeRangeParts[0]);
+      const endMatch = msPattern.exec(timeRangeParts[1]);
+      const startBase = startMatch[1];
+      const endBase = endMatch[1];
+      const startDuration = moment.duration(startBase);
+      const endDuration = moment.duration(endBase);
+      startDuration.add(parseInt(startMatch[2], 10), 'milliseconds');
+      endDuration.add(parseInt(endMatch[2], 10), 'milliseconds');
+
       captions.push({
         lineNumber: number,
-        timeRange: null,// timeRange,
+        startRaw: timeRangeParts[0],
+        endRaw: timeRangeParts[1],
+        start: startDuration.as('milliseconds'),
+        end: endDuration.as('milliseconds'),
         text: capLines.join('\n')
       });
     }

@@ -5,7 +5,11 @@ module.exports = function (req, h) {
     dao.getProjects().then(function (data) {
       resolve({
         success: true,
-        projects: data
+        projects: data.map((project) => {
+          return {
+            projectName: project.projectName
+          };
+        })
       });
     }, function (err) {
       resolve(err);

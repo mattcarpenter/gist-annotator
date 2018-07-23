@@ -1,5 +1,6 @@
 import Transcript from '../transcript';
 import Timeline from '../timeline';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'workspace',
@@ -9,29 +10,28 @@ export default {
   },
   props: [],
   data () {
-    const captions = [
-      { text: 'abc'.repeat(10), time: 0 },
-      { text: 'wtf wtf'.repeat(10), time: 0.1 },
-      { text: 'def '.repeat(100), time: 1 },
-      { text: 'ghsi '.repeat(15), time: 2 }
+    /*const captions = [
+      { text: 'abc'.repeat(10), start: 0 },
+      { text: 'wtf wtf'.repeat(10), start: 0.1 },
+      { text: 'def '.repeat(100), start: 1 },
+      { text: 'ghsi '.repeat(15), start: 2 }
     ];
 
     const captions2 = [
-      { text: 'lol '.repeat(20), time: 1 },
-      { text: 'wtf '.repeat(100), time: 2 },
-      { text: 'wat '.repeat(15), time: 3 }
-    ];
+      { text: 'lol '.repeat(20), start: 1 },
+      { text: 'wtf '.repeat(100), start: 2 },
+      { text: 'wat '.repeat(15), start: 3 }
+    ];*/
 
     return {
-      captions: captions,
-      captions2: captions2,
+      japaneseCaptions: [],
       pixelSeconds: 0,
       receivedNewPixelSecondsAfterResize: true
     };
   },
-  computed: {
-
-  },
+  computed: mapState({
+    englishCaptions: state => (state.projects.current || {}).englishCaptions || []
+  }),
   mounted () {
     window.addEventListener('resize', this.handleResize);
   },

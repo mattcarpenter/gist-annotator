@@ -18,6 +18,9 @@ export default {
   computed: {
 
   },
+  updated () {
+    this.layoutCaptions();
+  },
   mounted () {
     window.addEventListener('resize', this.handleResize);
     this.layoutCaptions();

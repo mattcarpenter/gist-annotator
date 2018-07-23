@@ -4,6 +4,6 @@
     v-for="caption in captions"
     :text="caption.text"
     :key="caption.id"
-    v-bind:style="{ top: (caption.time * pixelSeconds) + 'px' }"
+    v-bind:style="{ top: ((caption.start / 1000) * pixelSeconds) + 'px' }"
   />
 </section>
