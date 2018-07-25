@@ -1,4 +1,5 @@
 
-<div class="caption" v-html="text">
+<div class="caption">
+  <span v-for="token in tokens" v-html="token + '&nbsp;'"></span>
 </div>
 

@@ -1,6 +1,9 @@
 import Transcript from '../transcript';
 import Timeline from '../timeline';
 import { mapState, mapActions } from 'vuex';
+import kuroshiro from 'kuroshiro';
+
+kuroshiro.init();
 
 export default {
   name: 'workspace',

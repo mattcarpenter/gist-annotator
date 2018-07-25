@@ -3,6 +3,7 @@
   <Caption
     v-for="caption in captions"
     :text="caption.text"
+    :tokens="caption.tokens"
     :key="caption.id"
     v-bind:style="{ top: ((caption.start / 1000) * pixelSeconds) + 'px' }"
   />

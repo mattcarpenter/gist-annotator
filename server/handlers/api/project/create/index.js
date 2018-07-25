@@ -7,16 +7,21 @@ kuroshiro.init();
 
 module.exports = function (req, h) {
   return new Promise((resolve, reject) => {
-    const japaneseCaptions = srt.parse(req.payload.japaneseSrt);
-    japaneseCaptions.forEach((caption) => {
-      const input = caption.text;
-      caption.text = kuroshiro.convert(input, {
-        mode: 'furigana'
+    const japaneseCaptions = srt.parse(req.payload.japaneseSrt).map((caption) => {
+      caption.tokens = wanakana.tokenize(caption.text).map((token) => {
+        return kuroshiro.convert(token, {
+          mode: 'furigana'
+        });
       });
-      caption.tokens = wanakana.tokenize(input);
+      delete caption.text;
+      return caption;
     });
 
-    const englishCaptions = srt.parse(req.payload.englishSrt);
+    const englishCaptions = srt.parse(req.payload.englishSrt).map((caption) => {
+      caption.tokens = caption.text.split(' ');
+      delete caption.text;
+      return caption;
+    });
 
     dao.createProject(
       req.payload.projectName,

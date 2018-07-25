@@ -2,7 +2,8 @@ export default {
   name: 'caption',
   components: {},
   props: [
-    'text'
+    'text',
+    'tokens'
   ],
   data () {
     return {
