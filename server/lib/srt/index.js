@@ -1,5 +1,6 @@
 const msPattern = /(.+?)[,:](\d+?)$/;
 const moment = require('moment');
+const striptags = require('striptags');
 
 module.exports = {
   parse: parse
@@ -12,6 +13,8 @@ module.exports = {
  */
 function parse (srt) {
   const captions = [];
+  const combinedCaptions = [];
+
   console.log('inside parse');
   const lines = srt.split('\n').filter((line) => {
     return line !== '';
@@ -43,13 +46,29 @@ function parse (srt) {
         endRaw: timeRangeParts[1],
         start: startDuration.as('milliseconds'),
         end: endDuration.as('milliseconds'),
-        text: capLines.join('\n')
+        text: striptags(capLines.join('\n'))
       });
     }
     i++;
   }
 
-  return captions;
+  // Combine caption lines when adjacent captions have the same start time
+  if (captions.length > 2) {
+    let curr = 0;
+    while (curr < captions.length) {
+      combinedCaptions.push(captions[curr]);
+      if (curr < (captions.length - 1) && captions[curr].start === captions[curr + 1].start) {
+        captions[curr].text += ('\n' + captions[curr + 1].text);
+        // captions from next concatenated into current
+        // skip next
+        curr++;
+      }
+      curr++;
+    }
+    return combinedCaptions;
+  } else {
+    return captions;
+  }
 };
 
 function isNumber (val) {
