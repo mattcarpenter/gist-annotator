@@ -1,7 +1,7 @@
 
 <section class="workspace">
   <Transcript :captions="englishCaptions" v-on:time-scale-change="timeScaleChange" :pixelSeconds="pixelSeconds" />
-  <Timeline :pixelSeconds="pixelSeconds" />
+  <Timeline :pixelSeconds="pixelSeconds" :duration="duration" v-if="englishCaptions.length > 0 && japaneseCaptions.length > 0" />
   <Transcript :captions="japaneseCaptions" v-on:time-scale-change="timeScaleChange" :pixelSeconds="pixelSeconds" />
 </section>
 

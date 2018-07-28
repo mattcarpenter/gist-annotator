@@ -1,5 +1,5 @@
 
-<section class="timeline" v-bind:style="{ height: (pixelSeconds * duration) + 'px' }">
+<section class="timeline" v-bind:style="{ height: (pixelSeconds * (duration / 1000)) + 'px' }">
   <div
     v-for="marker in markers"
     class="timeline-marker"

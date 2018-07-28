@@ -1,9 +1,6 @@
 import Transcript from '../transcript';
 import Timeline from '../timeline';
-import { mapState, mapActions } from 'vuex';
-import kuroshiro from 'kuroshiro';
-
-kuroshiro.init();
+import { mapState } from 'vuex';
 
 export default {
   name: 'workspace',
@@ -20,7 +17,18 @@ export default {
   },
   computed: mapState({
     englishCaptions: state => (state.projects.current || {}).englishCaptions || [],
-    japaneseCaptions: state => (state.projects.current || {}).japaneseCaptions || []
+    japaneseCaptions: state => (state.projects.current || {}).japaneseCaptions || [],
+    duration: (state) => {
+      if (state.projects.current) {
+        const englishCaptions = state.projects.current.englishCaptions;
+        const japaneseCaptions = state.projects.current.japaneseCaptions;
+        const lastEnglishCaption = englishCaptions[englishCaptions.length - 1];
+        const lastJapaneseCaption = japaneseCaptions[japaneseCaptions.length - 1];
+        return Math.max(lastEnglishCaption.end, lastJapaneseCaption.end);
+      } else {
+        return 1000;
+      }
+    }
   }),
   mounted () {
     window.addEventListener('resize', this.handleResize);
