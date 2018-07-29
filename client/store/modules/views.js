@@ -5,6 +5,9 @@ const state = {
   newProjectModal: {
     errorMessage: '',
     visible: false
+  },
+  newAnnotationTrackModal: {
+    visible: false
   }
 };
 
@@ -17,6 +20,9 @@ const actions = {
   },
   toggleNewProjectModalVisible ({ commit }) {
     commit('toggleNewProjectModalVisible');
+  },
+  toggleNewAnnotationTrackModalVisible ({ commit }) {
+    commit('toggleNewAnnotationTrackModalVisible');
   }
 };
 
@@ -29,6 +35,9 @@ const mutations = {
   },
   setNewProjectModalErrorMessage (state, message) {
     state.newProjectModal.errorMessage = message;
+  },
+  toggleNewAnnotationTrackModalVisible (state) {
+    state.newAnnotationTrackModal.visible = !state.newAnnotationTrackModal.visible;
   }
 };
 

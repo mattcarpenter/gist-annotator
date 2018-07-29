@@ -1,0 +1,15 @@
+@import '../../assets/styles/colors.scss';
+
+.sidebar {
+  grid-area: sidebar;
+  border-left: solid 1px $border-color;
+  background-color: #FAFAFA;
+}
+
+.title {
+  padding: 5px;
+  font-size: 0.82em;
+  background-color: #E0E0E0;
+  color: #000;
+  border-bottom: solid 1px $border-color;
+}

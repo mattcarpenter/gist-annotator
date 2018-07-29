@@ -1,0 +1,24 @@
+@import '../../assets/styles/colors.scss';
+
+.annotation-tracks {
+  font-size: 0.82em;
+  background-color: #E0E0E0;
+  border-bottom: solid 1px $border-color;
+  padding-left: 10px;
+  height: 25px;
+  line-height: 25px;
+}
+
+.title {
+  float: left;
+}
+
+.add {
+  float: right;
+  padding-right: 10px;
+}
+
+.add i:hover {
+  color: $primary-color;
+  cursor: pointer;
+}

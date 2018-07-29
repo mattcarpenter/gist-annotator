@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Header />
-    <Workspace />
+    <Editor />
     <Footer />
   </div>
 </template>
@@ -10,6 +10,7 @@
 import axios from 'axios';
 import Header from '../header';
 import Workspace from '../workspace';
+import Editor from '../editor';
 import Footer from '../footer';
 
 export default {
@@ -35,7 +36,7 @@ export default {
   },
   components: {
     'Header': Header,
-    'Workspace': Workspace,
+    'Editor': Editor,
     'Footer': Footer
   }
 };
